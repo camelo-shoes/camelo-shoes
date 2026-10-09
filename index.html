@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAMELO Footwear Collection</title>
+  <style>
+    :root {
+      --primary: #111827;
+      --accent: #25d366;
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #1f2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding-bottom: 40px; }
+    header { background: var(--primary); color: #fff; text-align: center; padding: 2rem 1rem; }
+    header h1 { font-size: 1.6rem; letter-spacing: 1px; }
+    header p { opacity: 0.8; font-size: 0.9rem; margin-top: 4px; }
+    .container { max-width: 500px; margin: -20px auto 0; padding: 0 16px; }
+    .card { background: var(--card); border-radius: 16px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+    .tag { display: inline-block; background: #e5e7eb; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 99px; text-transform: uppercase; margin-bottom: 10px; }
+    h2 { font-size: 1.3rem; margin-bottom: 6px; }
+    .price { font-size: 1.4rem; font-weight: 800; color: #047857; margin-bottom: 16px; }
+    .label { font-size: 0.85rem; font-weight: 700; color: #4b5563; text-transform: uppercase; margin-bottom: 8px; }
+    .sizes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 20px; }
+    .size-btn { padding: 10px 0; border: 1.5px solid #d1d5db; background: transparent; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: center; font-size: 0.95rem; }
+    .size-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .features { list-style: none; margin-bottom: 24px; font-size: 0.9rem; color: #4b5563; }
+    .features li { margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .features li::before { content: "✓"; color: #059669; font-weight: 900; }
+    .buy-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent); color: #fff; text-decoration: none; padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 700; box-shadow: 0 4px 14px rgba(37,211,102,0.35); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CAMELO FOOTWEAR</h1>
+    <p>Premium Daily Comfort & Durability</p>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <span class="tag">In Stock</span>
+      <h2>CAMELO Cushioned Casual Slippers</h2>
+      <div class="price">Rs. 1,499</div>
+
+      <div class="label">Select Size</div>
+      <div class="sizes">
+        <button type="button" class="size-btn" onclick="setSize('6')">6</button>
+        <button type="button" class="size-btn" onclick="setSize('7')">7</button>
+        <button type="button" class="size-btn" onclick="setSize('8')">8</button>
+        <button type="button" class="size-btn active" onclick="setSize('9')">9</button>
+        <button type="button" class="size-btn" onclick="setSize('10')">10</button>
+        <button type="button" class="size-btn" onclick="setSize('11')">11</button>
+      </div>
+
+      <ul class="features">
+        <li>Extra-soft padded insole for all-day comfort</li>
+        <li>Durable anti-slip rubber outsole</li>
+        <li>Multiple color choices available</li>
+        <li>Cash on delivery available nationwide</li>
+      </ul>
+
+      <a id="orderBtn" href="https://wa.me/923000000000?text=Hello%2C%20I%20want%20to%20order%20CAMELO%20slippers%20in%20Size%209" target="_blank" class="buy-btn">
+        Order via WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <script>
+    let currentSize = "9";
+    const phone = "923000000000"; // Replace with your WhatsApp number (include country code without +)
+
+    function setSize(val) {
+      currentSize = val;
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText === val);
+      });
+      const text = encodeURIComponent(`Hello! I want to order CAMELO Slippers in Size ${currentSize}.`);
+      document.getElementById('orderBtn').href = `https://wa.me/${phone}?text=${text}`;
+    }
+  </script>
+</body>
+</html>
